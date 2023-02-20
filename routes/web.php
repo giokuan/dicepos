@@ -8,6 +8,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseDetailController;
 use App\Http\Controllers\UpdatingProductController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SaleDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,3 +89,15 @@ Route::get('edit-product/{id}',[PurchaseDetailController::class,'editProduct'])-
 Route::get('updating-product',[UpdatingProductController::class,'updatingProduct'])->name('updating-product');
 Route::get('edit-updating-product/{id}',[UpdatingProductController::class,'editUpdatingProduct'])->name('edit-updating-product');
 Route::post('update-stock-product',[UpdatingProductController::class, 'updateStockProduct'])->name('update-stock-product');
+
+
+// SELL PRODUCT
+
+Route::get('sell-product',[SaleController::class,'sellProduct'])->name('sell-product');
+Route::post('save-sell-product',[SaleController::class, 'saveSellProduct'])->name('save-sell-product');
+Route::get('all-sells-product',[SaleController::class,'allSellProduct'])->name('all-sells-product');
+
+
+// SALE DETAILS
+
+Route::get('all-sells-detail',[SaleDetailController::class,'allSaleDetail'])->name('all-sells-detail');

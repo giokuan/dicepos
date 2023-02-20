@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Customer;
+use App\Models\CustomerName;
+use App\Models\CustomerId;
 
 use Illuminate\Http\Request;
 
@@ -36,8 +38,19 @@ class CustomerController extends Controller
         $cust->customername = $customername;
         $cust->contact = $contact;
         $cust->address = $address;
-        
         $cust->save();
+
+
+        $custname = new CustomerName();
+        $custname->name = $customername;
+        $custname->save();
+
+        $custid = new CustomerId();
+        $custid->customer_id =  $cust->id;
+        $custid->customer_name = $cust->id;
+        $custid->save();
+        
+       
 
         return redirect()->back()->with('success','Customer Added Successfuly'); 
        

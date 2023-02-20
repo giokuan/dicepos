@@ -51,10 +51,8 @@ class UpdatingProductController extends Controller
 
 
         $data = Product::find($request->id);
-
-        $data->stocks = number_format($data->stocks2 + $data->product_quantity);
-        // $data->stocks = $data->stk;
         // dd($data);
+        $data->stocks = number_format($data->stocks2 + $data->product_quantity);
         $data->save();
 
         return redirect()->back()->with('success','Product Updated Succesfuly');

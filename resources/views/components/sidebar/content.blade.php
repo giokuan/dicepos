@@ -84,9 +84,9 @@
               
         </x-slot>
        
-        <x-sidebar.link title="Sell Product " href='#' />
-        <x-sidebar.link title="Sales " href='#' />
-        <x-sidebar.link title="Sales Details " href='#' />
+        <x-sidebar.link title="Sell Product " href='/sell-product' />
+        <x-sidebar.link title="Sales " href='/all-sells-product' />
+        <x-sidebar.link title="Sales Details " href='/all-sells-detail' />
   
     </x-sidebar.dropdown>
 

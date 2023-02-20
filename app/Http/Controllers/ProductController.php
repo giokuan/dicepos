@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\PurchasesTable;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\PurchaseDetail;
@@ -39,15 +40,9 @@ class ProductController extends Controller
 
 
     public function allProduct(){
-        // $products = Product::get();
-
-        $products = DB::table('purchase_details')
-        ->join('products', 'purchase_details.product_id', '=', 'products.id')
-      
-        ->select('products.*','purchase_details.*', 'products.productname', 'products.stocks', 'purchase_details.product_quantity')
-        ->where('products.id', '=', 'purchase_details.product_id')
-        ->get();
-      
+    
+        $products = Product::get();
+  
         return view('all-product', compact('products'));
     }
 

@@ -33,6 +33,11 @@ class Product extends Model
         return $this->hasMany(PurchaseDetail::class);
         
     }
+
+    public function sale_details(){
+        return $this->hasMany(SaleDetail::class);
+        
+    }
     
     public static function search($search)
     {
