@@ -16,6 +16,7 @@ class UpdatingProductController extends Controller
       
         ->select('products.*','purchase_details.*', 'products.productname', 'products.stocks', 'purchase_details.product_quantity')
         // ->where('products.productname', '=', 'purchases.product_name')
+
         ->get();
 
 
@@ -31,9 +32,8 @@ class UpdatingProductController extends Controller
         ->join('purchase_details', 'products.id', '=', 'purchase_details.product_id')
       
         ->select('products.*','purchase_details.*', 'products.productname', 'products.stocks', 'purchase_details.product_quantity')
-        // ->where('products.productname', '=', 'purchases.product_name')
         ->get();
-    
+        // dd('total');
 
         return view('edit-updating-product', compact('updates'));
     }
@@ -44,16 +44,22 @@ class UpdatingProductController extends Controller
     public function updateStockProduct(Request $request){
         $request-> validate([
             'productname'=>'required',
-            'stocks2'=>'required',
+            'stocks'=>'required',
             'product_quantity'=>'required'
     
         ]);
 
 
         $data = Product::find($request->id);
-        // dd($data);
-        $data->stocks = number_format($data->stocks2 + $data->product_quantity);
-        $data->save();
+
+        // $data = DB::table('products')
+        //     ->join('purchase_details', 'products.id', '=', 'purchase_details.product_id')
+        //     ->where('products.stocks', '=', 'purchase_details.product_quantity')
+        //     ->sum('purchase_details.product_quantity');
+          
+        
+        // $data->products->stocks = number_format($data->stocks + $data->product_quantity);
+    //    $data->save();
 
         return redirect()->back()->with('success','Product Updated Succesfuly');
     }
